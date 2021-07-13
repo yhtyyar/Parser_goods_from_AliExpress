@@ -5,13 +5,8 @@ import repository.IOConnector;
 
 public class GoodsController {
 
-    private final HttpConnector httpConnector;
-    private final IOConnector ioConnector;
-
-    public GoodsController(HttpConnector httpConnector,IOConnector ioConnector ) {
-        this.httpConnector = httpConnector;
-        this.ioConnector = ioConnector;
-    }
+    private final HttpConnector httpConnector = new HttpConnector();
+    private final IOConnector ioConnector = new IOConnector();
 
 
     public void startParsing(int quantity) {
