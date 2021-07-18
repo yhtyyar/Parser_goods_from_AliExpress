@@ -14,8 +14,6 @@ public class GoodsRepository {
     public static final List<String> itemsList = new ArrayList<>();
 
     private static final String TRIMMED_STR = "/\\*\\*/jQuery.*\\w\\(";
-    private static final Gson gson = new Gson();
-    private static final Pattern pattern = Pattern.compile(TRIMMED_STR);
     private final HttpConnector httpConnector;
 
     public GoodsRepository() {
@@ -34,12 +32,15 @@ public class GoodsRepository {
             for (Goods gds : goods) {
                 itemsList.add(gds.toString());
             }
-
         }
         return  goods;
     }
 
+
     public Result convertingFromJSON(String goods) {
+
+        Gson gson = new Gson();
+        Pattern pattern = Pattern.compile(TRIMMED_STR);
 
         StringBuilder stringBuilder = new StringBuilder(goods);
         stringBuilder.setLength(stringBuilder.length() - 2);
