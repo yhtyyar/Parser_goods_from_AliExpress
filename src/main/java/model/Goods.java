@@ -75,9 +75,6 @@ public class Goods {
     private String trace;
 
 
-
-
-
     @Override
     public String toString() {
         return "Goods {" + "\n" +

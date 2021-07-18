@@ -1,23 +1,24 @@
 package controller;
 
-import repository.HttpConnector;
-import repository.IOConnector;
+import model.Goods;
+import service.GoodsService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GoodsController {
 
-    private final HttpConnector httpConnector = new HttpConnector();
-    private final IOConnector ioConnector = new IOConnector();
+    private final GoodsService goodsService;
+    private final List<Goods> goodsList = new ArrayList<>();
+
+    public GoodsController() {
+        this.goodsService = new GoodsService();
+    }
 
 
-    public void startParsing(int quantity) {
+    public List<Goods> startParsing(int quantityGoods) {
+        goodsList.addAll(goodsService.startParsing(quantityGoods));
 
-        int numberOfRepetitions = quantity / 10;
-
-        for (int i = 0; i < numberOfRepetitions; i++) {
-            String request = httpConnector.getConnection(i);
-            ioConnector.addGoodsToArray(request);
-        }
-
-        ioConnector.saveToFile();
+        return goodsList;
     }
 }

@@ -1,13 +1,9 @@
-import controller.GoodsController;
-
+import view.GoodsView;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        GoodsController goodsController = new GoodsController();
-
-        goodsController.startParsing(100);
-
+        GoodsView goodsView = new GoodsView();
+        goodsView.start(100);
     }
 }

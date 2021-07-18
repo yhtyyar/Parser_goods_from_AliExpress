@@ -10,11 +10,11 @@ import java.io.IOException;
 
 public class HttpConnector {
 
-    public String getConnection(int quantity) {
+    public String getConnection(int repetitionNumber) {
 
         HttpGet getConnection = new HttpGet("https://gpsfront.aliexpress.com/getRecommendingResults.do?callback=" +
                 "jQuery18308651937148592963_1618481732718&widget_id=5547572&platform=pc&limit=10&offset="
-                + quantity * 10 + "&phase=1&productIds2Top=&postback=1618481735088");
+                + repetitionNumber * 10 + "&phase=1&productIds2Top=&postback=1618481735088");
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
              CloseableHttpResponse response = httpClient.execute(getConnection)) {
@@ -31,6 +31,6 @@ public class HttpConnector {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return " ";
+        return "";
     }
 }
